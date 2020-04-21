@@ -1,0 +1,5 @@
+Sitemap: https://newworldhub.com/sitemap.xml
+
+User-agent: *
+Disallow: /api/connect.php
+Disallow: /api/connectPDO.php

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://C:/xampp/htdocs/api/.idea/api.iml" filepath="C:/xampp/htdocs/api/.idea/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AngularProjects/itemdatabases/.idea/itemdatabases.iml" filepath="$PROJECT_DIR$/../AngularProjects/itemdatabases/.idea/itemdatabases.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AngularProjects/new-world-hub/.idea/new-world-hub.iml" filepath="$PROJECT_DIR$/../AngularProjects/new-world-hub/.idea/new-world-hub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AngularProjects/test/.idea/test.iml" filepath="$PROJECT_DIR$/../AngularProjects/test/.idea/test.iml" />
+    </modules>
+  </component>
+</project>
