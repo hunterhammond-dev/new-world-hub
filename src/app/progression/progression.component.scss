@@ -1,0 +1,41 @@
+.main {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: .5em;
+}
+
+.main-div {
+  justify-content: center;
+  margin-top: 2em;
+  position:relative;
+}
+
+fa-icon {
+  font-size: 1.3rem;
+}
+
+mat-card {
+  background-color: #292929;
+  outline: none;
+}
+
+mat-card-content {
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+mat-card-content > h1 {
+  text-align: center;
+  font-size: 3vh;
+  color: white;
+}
+
+@media only screen and (max-width: 828px) {
+  .main {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: .5rem;
+  }
+}
+

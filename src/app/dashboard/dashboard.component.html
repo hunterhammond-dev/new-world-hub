@@ -1,0 +1,50 @@
+<div class="main-div">
+  <mat-card class="main">
+    <h1>Profile Dashboard</h1>
+    <mat-card-content>
+      <div class="row">
+        <div class="column left">
+          <img class="responsive" src="https://newworldhub.com/api/assets/{{userData.profilePicture}}">
+        </div>
+        <div class="column middle text-in-tile">
+          <h3 style="margin-top: 1em" class="border-title">User Info</h3>
+          <p>Username: {{userData.name}}</p>
+            <br>
+          <p>XP: {{userData.points}}</p>
+          <div class="points">
+            <img style="width: 50px; height: 50px" src="/assets/bitmap.png" alt="pts">
+            <div class="pts-center">
+              <p *ngIf="userData.points >= 0 && userData.points <= 1">1</p>
+              <p *ngIf="userData.points >= 2 && userData.points <= 8">2</p>
+              <p *ngIf="userData.points >= 9 && userData.points <= 27">3</p>
+              <p *ngIf="userData.points >= 28 && userData.points <= 64">4</p>
+              <p *ngIf="userData.points >= 65 && userData.points <= 125">5</p>
+              <p *ngIf="userData.points >= 126 && userData.points <= 216">6</p>
+              <p *ngIf="userData.points >= 217 && userData.points <= 343">7</p>
+              <p *ngIf="userData.points >= 344 && userData.points <= 512">8</p>
+              <p *ngIf="userData.points >= 513 && userData.points <= 729">9</p>
+              <p *ngIf="userData.points >= 730 && userData.points <= 1000">10</p>
+            </div>
+          </div>
+            <br>
+          <h3 style="margin-top: 1em" class="border-title">Email</h3>
+          <p>Email: {{userData.email}}</p>
+            <br>
+          <button mat-raised-button color="accent" type="submit">Change Email</button>
+            <br>
+          <h3 style="margin-top: 1em" class="border-title">Profile Picture</h3>
+          <div *ngIf="uploadResponse && uploadResponse.status === 'error'">
+          </div>
+          <div *ngIf="uploadResponse && uploadResponse.status === 'success'">
+            <img [src]='uploadResponse.url' />
+          </div>
+          <form style="margin-top: 1em" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <input type="file" name="avatar" (change)="onFileSelect($event)"/>
+            <button mat-raised-button color="accent" type="submit">Upload</button>
+          </form>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

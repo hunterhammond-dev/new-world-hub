@@ -1,0 +1,35 @@
+<div class="main-div">
+  <mat-card class="main" *ngFor="let companies of companies">
+    <mat-card-content>
+      <h1>{{companies.CompanyName}}</h1>
+      <div class="row">
+        <div class="col">
+          <h1>Company Info</h1>
+          <h3>Leader: {{companies.name}}</h3>
+          <h3>Faction: {{companies.Faction}}</h3>
+          <h3>Server: {{companies.Server}}</h3>
+          <h3>Focus: {{companies.Focus}}</h3>
+          <h3>Size: {{companies.Size}}</h3>
+          <h3>Language: {{companies.Language}}</h3>
+          <h3>Voice: {{companies.Voice}}</h3>
+        </div>
+        <div class="col-6">
+          <h1>Description</h1>
+          <h3>{{companies.description}}</h3>
+          <button mat-raised-button color="accent" *ngIf="companies.Leader == this.dataService.getToken()" (click)="this.forumService.getNavigation('updateCompany', '')">Update Company</button>
+        </div>
+        <div class="col">
+          <h1>Members</h1>
+          <div *ngFor="let assignment of assignment">
+            <h3>{{assignment.username}}<fa-icon *ngIf="deleteBool == 1" [icon]="faTimes" (click)="this.companyService.setMemberToken(assignment.companyAssignmentId); deleteMember()"></fa-icon></h3>
+          </div>
+          <button style="margin-top: 1em" mat-raised-button color="accent" *ngIf="companies.Leader == this.dataService.getToken() && deleteBool == 0" (click)="this.forumService.getNavigation('assignCompany', '')">Add Member</button>
+          <br>
+          <button style="margin-top: 1em" mat-raised-button color="accent" (click)="deleteBool == 1">Delete Members</button>
+          <button style="margin-top: 1em" *ngIf="deleteBool == 1" mat-raised-button color="accent" (click)="deleteBool = 0">Done</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

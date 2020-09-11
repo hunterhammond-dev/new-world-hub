@@ -1,0 +1,89 @@
+<div class="main-div">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Create a guide</mat-card-title>
+    </mat-card-header>
+    <div class="form-display">
+      <form [formGroup]="createCompanyForm" (ngSubmit)="postCompany(createCompanyForm.value)" autocomplete="off" >
+
+        <div class="form-group">
+          <div class="form-display">
+            <mat-form-field color="accent" appearance="outline" style="width: 80%;">
+              <mat-label>Name</mat-label>
+              <input matInput type="text" name="CompanyName" formControlName="CompanyName" autocomplete="off">
+            </mat-form-field>
+          </div>
+          <div class="form-display">
+            <mat-form-field color="accent" appearance="outline" style="width: 80%;">
+              <mat-label>Description</mat-label>
+              <input matInput type="text" name="description" formControlName="description" autocomplete="off">
+            </mat-form-field>
+          </div>
+
+          <div class="form-display">
+            <mat-form-field appearance="fill">
+              <mat-label>Faction</mat-label>
+              <mat-select name="Faction" formControlName="Faction" autocomplete="off">
+                <mat-option value="Syndicate">Syndicate</mat-option>
+                <mat-option value="Covenant">Covenant</mat-option>
+                <mat-option value="Marauders">Marauders</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-display">
+            <mat-form-field appearance="fill">
+              <mat-label>Server</mat-label>
+              <mat-select name="Server" formControlName="Server" autocomplete="off">
+                <mat-option value="test">test</mat-option>
+                <mat-option value="test1">test1</mat-option>
+                <mat-option value="test2">test2</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-display">
+            <mat-form-field appearance="fill">
+              <mat-label>Focus</mat-label>
+              <mat-select name="Focus" formControlName="Focus" autocomplete="off">
+                <mat-option value="PvE">PvE</mat-option>
+                <mat-option value="PvP">PvP</mat-option>
+                <mat-option value="Crafting">Crafting</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-display">
+            <mat-form-field appearance="fill">
+              <mat-label>Size</mat-label>
+              <mat-select name="Size" formControlName="Size" autocomplete="off">
+                <mat-option value="1-9">1-9</mat-option>
+                <mat-option value="10-19">10-19</mat-option>
+                <mat-option value="20-29">20-29</mat-option>
+                <mat-option value="30-39">30-39</mat-option>
+                <mat-option value="40-49">40-49</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-display">
+            <mat-form-field appearance="fill">
+              <mat-label>Size</mat-label>
+              <mat-select name="Language" formControlName="Language" autocomplete="off">
+                <mat-option value="English">English</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-display">
+            <mat-form-field appearance="fill">
+              <mat-label>Size</mat-label>
+              <mat-select name="Voice" formControlName="Voice" autocomplete="off">
+                <mat-option value="Discord">Discord</mat-option>
+                <mat-option value="TeamSpeak">TeamSpeak</mat-option>
+                <mat-option value="None">None</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+        </div>
+        <button mat-raised-button color="accent" type="submit" [disabled]="!createCompanyForm.valid">Create</button>
+      </form>
+    </div>
+  </mat-card>
+</div>

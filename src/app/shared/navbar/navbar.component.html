@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#">
+    <img class="navbar-logo" src="assets/logo.png" width="40" height="40" alt="">
+    New World Hub
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <span class="spacer"></span>
+    <button mat-stroked-button color="accent" class="nav-item tab-btn" routerLink="">Home</button>
+    <button mat-stroked-button color="accent" style="margin-left: 10px" class="nav-item tab-btn" routerLink="forum">Forum</button>
+    <button mat-stroked-button color="accent" style="margin-left: 10px" class="nav-item tab-btn" routerLink="guides">Guides</button>
+    <button mat-stroked-button color="accent" style="margin-left: 10px" class="nav-item tab-btn" routerLink="progression">Progression</button>
+    <button mat-stroked-button color="accent" style="margin-left: 10px" class="nav-item tab-btn" routerLink="companies">Companies</button>
+    <button mat-stroked-button color="accent" style="margin-left: 10px" class="nav-item tab-btn" routerLink="news">News</button>
+    <span class="spacer"></span>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="nav-item" *ngIf="loginbtn" mat-stroked-button color="accent" routerLink="registration" routerLinkActive="active">Registration</button>
+      <button class="nav-item" *ngIf="logoutbtn" mat-stroked-button color="accent" routerLink="dashboard/{{this.dataService.getToken()}}" routerLinkActive="active">Dashboard</button>
+      <button class="nav-item" *ngIf="loginbtn" mat-raised-button color="accent" routerLink="login" routerLinkActive="active">Login</button>
+      <button class="nav-item" *ngIf="logoutbtn" mat-raised-button color="accent" routerLink="" (click)="logout()">Logout</button>
+    </form>
+  </div>
+</nav>

@@ -1,0 +1,42 @@
+<div class="main-div">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Welcome to New World Hub!</mat-card-title>
+    </mat-card-header>
+    <div class="form-display">
+      <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" >
+
+        <div class="form-group">
+          <div class="form-display">
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Create Username</mat-label>
+              <input matInput type="text" name="name" formControlName="name" autocomplete="off" id="txt_uname" ng-model="username" ng-keyup='checkUsername()'>
+            </mat-form-field>
+          </div>
+          <div class="form-display">
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Enter your email</mat-label>
+              <input matInput type="email" name="email" formControlName="email" autocomplete="off">
+            </mat-form-field>
+          </div>
+          <div class="form-display">
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Create a password</mat-label>
+              <input matInput type="password" name="pwd" formControlName="pwd"  autocomplete="off">
+            </mat-form-field>
+          </div>
+          <div class="form-display">
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Confirm Password</mat-label>
+              <input matInput type="password" name="confirmPwd" formControlName="confirmPwd" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.confirmPwd.errors }">
+            </mat-form-field>
+            <div *ngIf="f.confirmPwd.errors">
+              <div class="alert" *ngIf="f.confirmPwd.errors.passwordValidation && angForm.invalid">Passwords do not match</div>
+            </div>
+          </div>
+        </div>
+        <button mat-raised-button color="accent" type="submit" [disabled]="angForm.invalid">Sign Up</button>
+      </form>
+    </div>
+  </mat-card>
+</div>

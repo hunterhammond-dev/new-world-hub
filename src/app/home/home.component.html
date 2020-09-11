@@ -1,0 +1,71 @@
+<head>
+  <meta charset="utf-8">
+  <title>New World Hub</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="New World, New World MMO, MMO, MMORPG, New World Guides, guides, how to, new world game, new world video game">
+  <meta name="description" content="Your guide to everything New World Guides, Forum, Skill Tracker, Company Database, and items.">
+</head>
+<img src="assets/amazon-new-world-30133-1920x1080.png" alt="Nature" class="responsive lower-separator">
+<div class="main-div">
+  <div class="center">
+    <div class="border-title">
+      <h1 class="title" style="text-align: center">Latests Guides</h1>
+    </div>
+  </div>
+  <mat-card class="main" routerLink="guides/new-world-invasions-multiplayer-pve-experience">
+    <mat-card-content>
+      <div class="row">
+        <div class="col right text-in-tile">
+          <h1>New World Invasions Multiplayer PvE Experience</h1>
+          <p>Created by: Superbia</p>
+          <p>Posted: 4/13/2020</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <br>
+  <div class="center">
+    <div class="border-title">
+      <h1 class="title" style="text-align: center">Top Posts</h1>
+    </div>
+  </div>
+  <mat-card class="main" *ngFor="let topics of topics">
+    <mat-card-content>
+      <div class="row">
+        <div class="column1 left1">
+          <img class="responsive-topics" src="https://newworldhub.com/api/assets/{{topics.profilePicture}}" alt="user-profile-picture">
+          <p class="under-profile" *ngIf="topics.points <= 0">{{topics.name}} · 0</p>
+          <p class="under-profile" *ngIf="topics.points > 0">{{topics.name}} · {{topics.points}}</p>
+          <p class="under-profile" *ngIf="topics.dateDiff <= 59">Posted {{topics.dateDiff}}m ago</p>
+          <p class="under-profile" *ngIf="topics.dateDiff >= 60 && topics.dateDiff <= 1439">Posted {{Math.round(topics.dateDiff/60)}}h ago</p>
+          <p class="under-profile" *ngIf="topics.dateDiff >= 1440 && topics.dateDiff <= 10079">Posted {{Math.round(topics.dateDiff/1440)}}d ago</p>
+          <p class="under-profile" *ngIf="topics.dateDiff >= 10080 && topics.dateDiff <= 525599">Posted {{Math.round(topics.dateDiff/10080)}}w ago</p>
+          <p class="under-profile" *ngIf="topics.dateDiff >= 525600 ">Posted {{Math.round(topics.dateDiff/525600)}}y ago</p>
+        </div>
+        <div class="column1 middle1 text-in-tile">
+          <h1 routerLink="forum/{{topics.topicCat}}/{{topics.topicId}}"
+              (click)="this.forumService.setPostToken(topics.topicId)">{{topics.topicSubject}}</h1>
+          <p class="content">{{topics.topicContent}}</p>
+        </div>
+        <div class="column1 right1 text-in-tile">
+          <fa-icon [icon]="arrowUp" (click)="this.forumService.setLikeToken(topics.topicId); this.forumService.setAuthorToken(topics.topicBy); clickLike(); clickPoints();"></fa-icon>
+          <p class="content" style="font-size: 1.5em;" *ngIf="topics.likes <= 0">0</p>
+          <p class="content" style="font-size: 1.5em;" *ngIf="topics.likes > 0">{{topics.likes}}</p>
+          <fa-icon [icon]="arrowDown" (click)="this.forumService.setLikeToken(topics.topicId); clickDislike();"></fa-icon>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="center">
+    <div class="border-title">
+      <h1 class="title" style="text-align: center">About New World</h1>
+    </div>
+    <div class="main">
+      <p>
+        New World is a MMORPG set to have a full release on August 25, 2020 being developed by Amazon Game Studios and Double Helix Games. The game is set in a supernatural land known as Aeternum.
+        Players will have to fight the wilds and the other inhabitants of Aeternum in order to stake their claim.
+      </p>
+    </div>
+  </div>
+</div>

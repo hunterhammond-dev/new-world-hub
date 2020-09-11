@@ -1,0 +1,48 @@
+<img src="assets/Settlement_01.jpg" alt="" class="responsive lower-separator">
+
+<div class="main-div">
+  <div class="center">
+    <div class="border-title">
+      <h1 class="title" style="text-align: center">Find a Company</h1>
+    </div>
+    <h3 style="text-align: center">Post your company details to help people find you better.</h3>
+  </div>
+
+  <mat-card class="main">
+
+    <button mat-raised-button color="accent" (click)="this.forumService.getNavigation('createCompany', '')">Create a Company</button>
+
+  </mat-card>
+
+  <mat-card class="main">
+    <div style="overflow-x: auto;">
+    <table class="table table-light">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Company Name</th>
+        <th scope="col">Leader</th>
+        <th scope="col">Faction</th>
+        <th scope="col">Server</th>
+        <th scope="col">Focus</th>
+        <th scope="col">Size</th>
+        <th scope="col">Language</th>
+        <th scope="col">Voice</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let companies of companies">
+        <th scope="row" routerLink="{{companies.CompanyId}}"
+            (click)="this.companyService.setCompanyToken(companies.CompanyId);">{{companies.CompanyName}}</th>
+        <td>{{companies.name}}</td>
+        <td>{{companies.Faction}}</td>
+        <td>{{companies.Server}}</td>
+        <td>{{companies.Focus}}</td>
+        <td>{{companies.Size}}</td>
+        <td>{{companies.Language}}</td>
+        <td>{{companies.Voice}}</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </mat-card>
+</div>

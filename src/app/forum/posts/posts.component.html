@@ -1,0 +1,81 @@
+<div class="main-div">
+
+  <mat-card class="main" *ngFor="let topics of topics">
+    <mat-card-content>
+      <div class="row">
+        <div class="column left">
+          <img class="responsive" src="https://newworldhub.com/api/assets/{{topics.profilePicture}}">
+          <p *ngIf="topics.points <= 0">{{topics.name}} · 0</p>
+          <p *ngIf="topics.points > 0">{{topics.name}} · {{topics.points}}</p>
+          <p *ngIf="topics.dateDiff <= 59">Posted {{topics.dateDiff}}m ago</p>
+          <p *ngIf="topics.dateDiff >= 60 && topics.dateDiff <= 1439">Posted {{Math.round(topics.dateDiff/60)}}h ago</p>
+          <p *ngIf="topics.dateDiff >= 1440 && topics.dateDiff <= 10079">Posted {{Math.round(topics.dateDiff/1440)}}d ago</p>
+          <p *ngIf="topics.dateDiff >= 10080 && topics.dateDiff <= 525599">Posted {{Math.round(topics.dateDiff/10080)}}w ago</p>
+          <p *ngIf="topics.dateDiff >= 525600 ">Posted {{Math.round(topics.dateDiff/525600)}}y ago</p>
+        </div>
+        <div class="column middle text-in-tile">
+          <h1 routerLink="{{topics.topicId}}"
+              (click)="this.forumService.setPostToken(topics.topicId)">{{topics.topicSubject}}</h1>
+          <p class="content">{{topics.topicContent}}</p>
+        </div>
+        <div class="column right text-in-tile">
+          <fa-icon [icon]="arrowUp" (click)="this.forumService.setLikeToken(topics.topicId); this.forumService.setAuthorToken(topics.topicBy); clickLike(); clickPoints();"></fa-icon>
+            <p class="content" style="font-size: 1.5em;" *ngIf="topics.likes <= 0">0</p>
+            <p class="content" style="font-size: 1.5em;" *ngIf="topics.likes > 0">{{topics.likes}}</p>
+          <fa-icon [icon]="arrowDown" (click)="this.forumService.setLikeToken(topics.topicId); clickDislike();"></fa-icon>
+          <div style="padding-top: 2vh" *ngIf="topics.topicBy == this.dataService.getToken() || this.dataService.getToken() == admin">
+            <fa-icon style="padding: .2em;" [icon]="faTrash" (click)="deleteTopic()"></fa-icon>
+            <fa-icon style="padding: .2em;" [icon]="faEdit" (click)="this.forumService.getNavigation('updateTopic', '')">Update</fa-icon>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="main">
+    <mat-card-content *ngFor="let posts of posts | paginate: { itemsPerPage: 20, currentPage: p }; last as last">
+      <div class="row">
+        <div class="column left">
+          <img class="responsive" src="https://newworldhub.com/api/assets/{{posts.profilePicture}}">
+          <p *ngIf="posts.points <= 0">{{posts.name}} · 0</p>
+          <p *ngIf="posts.points > 0">{{posts.name}} · {{posts.points}}</p>
+          <p *ngIf="posts.dateDiff <= 59">Posted {{posts.dateDiff}}m ago</p>
+          <p *ngIf="posts.dateDiff >= 60 && posts.dateDiff <= 1439">Posted {{Math.round(posts.dateDiff/60)}}h ago</p>
+          <p *ngIf="posts.dateDiff >= 1440 && posts.dateDiff <= 10079">Posted {{Math.round(posts.dateDiff/1440)}}d ago</p>
+          <p *ngIf="posts.dateDiff >= 10080 && posts.dateDiff <= 525599">Posted {{Math.round(posts.dateDiff/10080)}}w ago</p>
+          <p *ngIf="posts.dateDiff >= 525600 ">Posted {{Math.round(posts.dateDiff/525600)}}y ago</p>
+        </div>
+        <div class="column middle text-in-tile">
+          <p class="content">{{posts.postContent}}</p>
+        </div>
+        <div class="column right text-in-tile">
+          <div *ngIf="posts.postBy == this.dataService.getToken() || this.dataService.getToken() == admin">
+            <fa-icon [icon]="faTrash" (click)="this.forumService.setComToken(posts.postId); deletePost()"></fa-icon>
+          </div>
+        </div>
+      </div>
+      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="main">
+    <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
+  </mat-card>
+
+  <mat-card class="main" *ngIf="this.dataService.isLoggedIn()">
+    <div class="form-display">
+      <form [formGroup]="createPostForm" (ngSubmit)="postComment(createPostForm.value)" autocomplete="off" >
+        <div class="form-group">
+          <div class="form-display">
+            <mat-form-field color="accent" appearance="outline" style="width: 100%;">
+              <mat-label>Comment</mat-label>
+              <textarea matInput type="text" name="postContent" formControlName="postContent" autocomplete="off"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <button mat-raised-button color="accent" type="submit" [disabled]="!createPostForm.valid">Create</button>
+      </form>
+    </div>
+  </mat-card>
+
+</div>

@@ -1,0 +1,29 @@
+<div class="main-div">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Create a post</mat-card-title>
+    </mat-card-header>
+    <div class="form-display">
+      <form [formGroup]="createTopicForm" (ngSubmit)="postTopic(createTopicForm.value)" autocomplete="off" >
+
+        <div class="form-group">
+          <div class="form-display">
+            <mat-form-field color="accent" appearance="outline" style="width: 80%;">
+              <mat-label>Subject</mat-label>
+              <input matInput type="text" name="topicSubject" formControlName="topicSubject" autocomplete="off">
+            </mat-form-field>
+          </div>
+          <div class="form-display">
+            <mat-form-field color="accent" appearance="outline" style="width: 80%;">
+              <mat-label>Content</mat-label>
+              <textarea matInput type="text" name="topicContent" formControlName="topicContent" autocomplete="off"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <button mat-raised-button color="accent" type="submit" [disabled]="!createTopicForm.valid">Create</button>
+
+      </form>
+    </div>
+  </mat-card>
+</div>
+

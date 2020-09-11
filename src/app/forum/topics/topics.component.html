@@ -1,0 +1,35 @@
+<div class="main-div">
+  <mat-card class="main" *ngIf="this.dataService.isLoggedIn()">
+    <button mat-raised-button color="accent" (click)="this.forumService.getNavigation('createTopic', '')">Create Post</button>
+  </mat-card>
+  <mat-card class="main" *ngFor="let topics of topics | paginate: { itemsPerPage: 5, currentPage: p }">
+    <mat-card-content>
+      <div class="row">
+        <div class="column left">
+          <img class="responsive-topics" src="https://newworldhub.com/api/assets/{{topics.profilePicture}}">
+          <p *ngIf="topics.points <= 0">{{topics.name}} · 0</p>
+          <p *ngIf="topics.points > 0">{{topics.name}} · {{topics.points}}</p>
+          <p *ngIf="topics.dateDiff <= 59">Posted {{topics.dateDiff}}m ago</p>
+          <p *ngIf="topics.dateDiff >= 60 && topics.dateDiff <= 1439">Posted {{Math.round(topics.dateDiff/60)}}h ago</p>
+          <p *ngIf="topics.dateDiff >= 1440 && topics.dateDiff <= 10079">Posted {{Math.round(topics.dateDiff/1440)}}d ago</p>
+          <p *ngIf="topics.dateDiff >= 10080 && topics.dateDiff <= 525599">Posted {{Math.round(topics.dateDiff/10080)}}w ago</p>
+          <p *ngIf="topics.dateDiff >= 525600 ">Posted {{Math.round(topics.dateDiff/525600)}}y ago</p>
+        </div>
+        <div class="column middle text-in-tile">
+          <h1 routerLink="{{topics.topicId}}"
+              (click)="this.forumService.setPostToken(topics.topicId)">{{topics.topicSubject}}</h1>
+          <p class="content">{{topics.topicContent}}</p>
+        </div>
+        <div class="column right text-in-tile">
+          <fa-icon [icon]="arrowUp" (click)="this.forumService.setLikeToken(topics.topicId); this.forumService.setAuthorToken(topics.topicBy); clickLike(); clickPoints();"></fa-icon>
+          <p class="content" style="font-size: 1.5em;" *ngIf="topics.likes <= 0">0</p>
+          <p class="content" style="font-size: 1.5em;" *ngIf="topics.likes > 0">{{topics.likes}}</p>
+          <fa-icon [icon]="arrowDown" (click)="this.forumService.setLikeToken(topics.topicId); clickDislike();"></fa-icon>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="main">
+    <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
+  </mat-card>
+</div>

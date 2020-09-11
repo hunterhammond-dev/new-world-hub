@@ -1,0 +1,24 @@
+<img src="assets/homepage1.jpeg" alt="Nature" class="responsive lower-separator">
+<div class="main-div">
+  <div class="center">
+    <div class="border-title">
+      <h1 class="title" style="text-align: center">Categories</h1>
+    </div>
+  </div>
+  <mat-card class="main" *ngIf="this.dataService.getToken() == admin">
+    <button mat-raised-button color="accent" (click)="this.forumService.getNavigation('createCategory', '')">Create Category(Admin Only)</button>
+  </mat-card>
+  <mat-card class="main" routerLink="{{category.catId}}" (click)="this.forumService.setTopicToken(category.catId)" *ngFor="let category of categories">
+    <mat-card-content>
+      <div class="row">
+        <div class="column left">
+          <fa-icon [icon]="faComments"></fa-icon>
+        </div>
+        <div class="column right text-in-tile">
+          <h1>{{category.catName}}</h1>
+          <p>{{category.catDescription}}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

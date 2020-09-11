@@ -1,0 +1,112 @@
+.text-in-tile {
+  width: 100%;
+}
+
+.main {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: .5rem;
+}
+
+.main-div {
+  justify-content: center;
+  margin-top: 5rem;
+  position:relative;
+}
+
+.column {
+  float: left;
+  width: 100%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.responsive {
+  width: 5vw;
+  height: 5vw;
+  border-radius: 100%;
+}
+
+.title {
+  font-size: 2em;
+  font-family: 'IM Fell English', serif;
+}
+
+.border-title {
+  width: 40%;
+  margin: 0 auto;
+  border-bottom: 1px solid;
+  border-image: url('src/assets/hDivide1.png') 1;
+  margin-bottom: 2em;
+}
+
+.center {
+  justify-content: center;
+  margin-top: 2em;
+  position:relative;
+}
+
+fa-icon {
+  font-size: 5vw;
+}
+
+mat-card {
+  background-color: #292929;
+  outline: none;
+}
+
+mat-card-content {
+  color: white;
+  outline: none;
+}
+
+mat-card-content > h1 {
+  text-align: center;
+  font-size: 3vh;
+  color: white;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin: auto;
+  width: 100%;
+  color: white;
+  outline: none;
+  padding-bottom: 2vw;
+  letter-spacing: .05em;
+  line-height: normal;
+}
+
+h3 {
+  font-size: 1.2em;
+  width: 100%;
+  color: #d9d9d9;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: .05em;
+  margin-bottom: 1.5em;
+  line-height: normal;
+  font-family: 'PT Sans', sans-serif;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.3;
+  margin: auto;
+  width: 100%;
+  color: #d9d9d9;
+  letter-spacing: .05em;
+}
+
+@media only screen and (max-width: 828px) {
+  .main {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: .5rem;
+  }
+}

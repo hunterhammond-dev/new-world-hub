@@ -1,0 +1,28 @@
+  <div class="main-div">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>Welcome Back!</mat-card-title>
+      </mat-card-header>
+      <div class="form-display">
+        <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" >
+
+            <div class="form-group">
+              <div class="form-display">
+                  <mat-form-field color="accent" appearance="outline">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput type="email" name="email" formControlName="email" autocomplete="off">
+                  </mat-form-field>
+              </div>
+              <div class="form-display">
+                  <mat-form-field color="accent" appearance="outline">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput type="password" name="Password" formControlName="password"  autocomplete="off">
+                  </mat-form-field>
+              </div>
+            </div>
+            <button mat-raised-button color="accent" type="submit" [disabled]="!angForm.valid">Login</button>
+
+        </form>
+      </div>
+    </mat-card>
+  </div>
